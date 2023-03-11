@@ -1,20 +1,28 @@
 package professorallocationLuis.Entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "Professor")
 public class Professor {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
-	@column(name="cpf", unique=true, nullable=false, length=14)
+	
+	@Column(name="cpf", unique=true, nullable=false, length=14)
 	private String cpf;
+	
+	@ManyToOne(optional=false)
+	@JoinColumn(name="department", nullable=false, insertable=false, updatable=false)
 	private Long departmentId;
 
 	public Professor() {
