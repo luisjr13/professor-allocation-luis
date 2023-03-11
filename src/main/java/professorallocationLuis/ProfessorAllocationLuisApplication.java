@@ -8,7 +8,6 @@ public class ProfessorAllocationLuisApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ProfessorAllocationLuisApplication.class, args);
-		teste
 	}
 
 }
