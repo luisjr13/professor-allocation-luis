@@ -13,6 +13,7 @@ public class Professor {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
+	@column(name="cpf", unique=true, nullable=false, length=14)
 	private String cpf;
 	private Long departmentId;
 
@@ -47,7 +48,7 @@ public class Professor {
 	public String getCpf() {
 		return cpf;
 	}
-
+	
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
