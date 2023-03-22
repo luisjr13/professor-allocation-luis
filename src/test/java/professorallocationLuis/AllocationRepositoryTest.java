@@ -6,7 +6,6 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.TestPropertySource;
-import professorallocationLuis.AllocationRepositoryTest.DepartmentRepository;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = Replace.NONE)
@@ -20,7 +19,5 @@ public class AllocationRepositoryTest {
 
 	@Autowired
 	DepartmentRepository departmentRepository;
-
-public class AllocationRepositoryTest;
 
 }
