@@ -5,8 +5,6 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import professorallocationLuis.Entity.Allocation;
-import professorallocationLuis.Entity.Course;
-import professorallocationLuis.Entity.Professor;
 import repository.AllocationRepository;
 
 @Service
@@ -17,6 +15,10 @@ public class AllocationService {
     public Allocation findById(Long id) {
     	return allocationRepository.findById(id).orElse(null);
     }
+    
+    public List<Allocation> findAll() {
+    	return allocationRepository.findAll();
+    } 
     
     public List<Allocation> findByProfessor(Long professorId) {
     	return allocationRepository.findByProfessorId(professorId);
@@ -91,4 +93,6 @@ public class AllocationService {
     			&& currentAllocation.getStartHour().compareTo(newAllocation.getEndHour()) < 0
     			&& newAllocation.getStartHour().compareTo(currentAllocation.getEndHour()) < 0;
     }
+
+
     	}
