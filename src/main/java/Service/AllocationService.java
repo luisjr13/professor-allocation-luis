@@ -23,11 +23,52 @@ public class AllocationService {
     public List<Allocation> findByCourse(Long courseId) {
     	return allocationRepository.findByCourseId(courseId);
     }
-    
 
     public AllocationService(AllocationRepository allocationRepository) {
         super();
         this.allocationRepository = allocationRepository;
-        
     }
-}
+    
+    public Allocation save(Allocation allocation) {
+    	allocation.setId(null);
+    	return saveInternal(allocation);
+    }
+    
+    public Allocation update(Allocation allocation) {
+    	Long id = allocation.getId();
+    	if (id != null && allocationRepository.existsById(id)) {
+    		return saveInternal(allocation);
+    	} else {
+    		return null;
+    	}
+    }
+    		
+    private Allocation saveInternal(Allocation allocation) {
+		return null;
+	}
+
+	public void deleteById(Long id) {
+    	if (allocationRepository.existsById(id)) {
+    	allocationRepository.deleteById(id);
+    			}
+    		}
+    
+    public void deleteAll() {
+    	allocationRepository.deleteAllInBatch();
+    }
+    
+    boolean hasCollision(Allocation newAllocation) {
+    	boolean hasCollision = false;
+
+    	List<Allocation> currentAllocations = allocationRepository.findByProfessorId(newAllocation.getProfessorId());
+
+    	for (Allocation currentAllocation : currentAllocations) {
+    		hasCollision = hasCollision(currentAllocation, newAllocation);
+    		if (hasCollision) {
+    			break;
+    		}
+    	}
+
+    	return hasCollision;
+    }
+    	}
