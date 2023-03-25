@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import professorallocationLuis.Entity.Allocation;
+import professorallocationLuis.Entity.Course;
+import professorallocationLuis.Entity.Professor;
 import repository.AllocationRepository;
 
 @Service
@@ -44,8 +46,19 @@ public class AllocationService {
     }
     		
     private Allocation saveInternal(Allocation allocation) {
-		return null;
-	}
+        if (!isEndHourGreaterThanStartHour(allocation) || hasCollision(allocation)) {
+            throw new RuntimeException();
+        } else {
+            allocation = allocationRepository.save(allocation);
+
+            return allocation;
+        }
+    }
+
+    boolean isEndHourGreaterThanStartHour(Allocation allocation) {
+        return allocation != null && allocation.getStartHour() != null && allocation.getEndHour() != null
+                && allocation.getEndHour().compareTo(allocation.getStartHour()) > 0;
+    }
 
 	public void deleteById(Long id) {
     	if (allocationRepository.existsById(id)) {
