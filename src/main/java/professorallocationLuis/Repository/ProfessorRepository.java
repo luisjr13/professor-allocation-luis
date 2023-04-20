@@ -1,4 +1,4 @@
-package repository;
+package professorallocationLuis.Repository;
 
 import java.util.List;
 

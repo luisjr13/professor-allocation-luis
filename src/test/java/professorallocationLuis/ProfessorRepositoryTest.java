@@ -1,7 +1,7 @@
 package professorallocationLuis;
 
 import professorallocationLuis.Entity.Professor;
-import repository.ProfessorRepository;
+import professorallocationLuis.Repository.ProfessorRepository;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
