@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
+//import io.swagger.annotations.ApiOperation;
+//import io.swagger.annotations.ApiResponse;
+//import io.swagger.annotations.ApiResponses;
 import professorallocationLuis.Entity.Allocation;
 import professorallocationLuis.Service.AllocationService;
 
@@ -32,10 +32,10 @@ public class AllocationController {
         this.allocationService = allocationService;
     }
 
-    @ApiOperation(value = "Find all allocations")
-    @ApiResponses({
-            @ApiResponse(code = 200, message = "OK")
-    })
+    //@ApiOperation(value = "Find all allocations")
+    //@ApiResponses({
+            //@ApiResponse(code = 200, message = "OK")
+    //})
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<List<Allocation>> findAll() {
@@ -43,12 +43,12 @@ public class AllocationController {
         return new ResponseEntity<>(allocations, HttpStatus.OK);
     }
 
-    @ApiOperation(value = "Find an allocation by id")
-    @ApiResponses({
-            @ApiResponse(code = 200, message = "OK"),
-            @ApiResponse(code = 400, message = "Bad Request"),
-            @ApiResponse(code = 404, message = "Not Found")
-    })
+    //@ApiOperation(value = "Find an allocation by id")
+   // @ApiResponses({
+           // @ApiResponse(code = 200, message = "OK"),
+            //@ApiResponse(code = 400, message = "Bad Request"),
+           // @ApiResponse(code = 404, message = "Not Found")
+    //})
     @GetMapping(path = "/{allocation_id}", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<Allocation> findById(@PathVariable(name = "allocation_id") Long id) {
@@ -60,11 +60,11 @@ public class AllocationController {
         }
     }
 
-    @ApiOperation(value = "Find allocations by professor")
-    @ApiResponses({
-            @ApiResponse(code = 200, message = "OK"),
-            @ApiResponse(code = 400, message = "Bad Request")
-    })
+   // @ApiOperation(value = "Find allocations by professor")
+    //@ApiResponses({
+           // @ApiResponse(code = 200, message = "OK"),
+           // @ApiResponse(code = 400, message = "Bad Request")
+    //})
     @GetMapping(path = "/professor/{professor_id}", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<List<Allocation>> findByProfessor(@PathVariable(name = "professor_id") Long id) {
@@ -72,11 +72,11 @@ public class AllocationController {
         return new ResponseEntity<>(allocations, HttpStatus.OK);
     }
 
-    @ApiOperation(value = "Find allocations by course")
-    @ApiResponses({
-            @ApiResponse(code = 200, message = "OK"),
-            @ApiResponse(code = 400, message = "Bad Request")
-    })
+    //@ApiOperation(value = "Find allocations by course")
+   // @ApiResponses({
+           // @ApiResponse(code = 200, message = "OK"),
+           // @ApiResponse(code = 400, message = "Bad Request")
+    //})
     @GetMapping(path = "/course/{course_id}", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<List<Allocation>> findByCourse(@PathVariable(name = "course_id") Long id) {
@@ -84,11 +84,11 @@ public class AllocationController {
         return new ResponseEntity<>(allocations, HttpStatus.OK);
     }
 
-    @ApiOperation(value = "Save an allocation")
-    @ApiResponses({
-            @ApiResponse(code = 201, message = "Created"),
-            @ApiResponse(code = 400, message = "Bad Request")
-    })
+    //@ApiOperation(value = "Save an allocation")
+   // @ApiResponses({
+          //  @ApiResponse(code = 201, message = "Created"),
+          //  @ApiResponse(code = 400, message = "Bad Request")
+   // })
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<Allocation> save(@RequestBody Allocation allocation) {
@@ -100,12 +100,12 @@ public class AllocationController {
         }
     }
 
-    @ApiOperation(value = "Update an allocation")
-    @ApiResponses({
-            @ApiResponse(code = 200, message = "OK"),
-            @ApiResponse(code = 400, message = "Bad Request"),
-            @ApiResponse(code = 404, message = "Not Found")
-    })
+   // @ApiOperation(value = "Update an allocation")
+   // @ApiResponses({
+          //  @ApiResponse(code = 200, message = "OK"),
+          //  @ApiResponse(code = 400, message = "Bad Request"),
+          //  @ApiResponse(code = 404, message = "Not Found")
+   // })
     @PutMapping(path = "/{allocation_id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
     public ResponseEntity<Allocation> update(@PathVariable(name = "allocation_id") Long id,
@@ -123,10 +123,10 @@ public class AllocationController {
         }
     }
 
-    @ApiOperation(value = "Delete an allocation")
-    @ApiResponses({
-            @ApiResponse(code = 204, message = "No Content")
-    })
+    //@ApiOperation(value = "Delete an allocation")
+    //@ApiResponses({
+          //  @ApiResponse(code = 204, message = "No Content")
+   // })
     @DeleteMapping(path = "/{allocation_id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public ResponseEntity<Void> deleteById(@PathVariable(name = "allocation_id") Long id) {
@@ -134,10 +134,10 @@ public class AllocationController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @ApiOperation(value = "Delete all allocations")
-    @ApiResponses({
-            @ApiResponse(code = 204, message = "No Content")
-    })
+    //@ApiOperation(value = "Delete all allocations")
+   // @ApiResponses({
+          //  @ApiResponse(code = 204, message = "No Content")
+    //})
     @DeleteMapping
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public ResponseEntity<Void> deleteAll() {
